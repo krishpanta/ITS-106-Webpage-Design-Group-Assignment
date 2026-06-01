@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Destinations – Sydney Global Adventures</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      color: var(--white);
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+    .page-hero h1 { color: var(--white); margin-bottom: 12px; }
+    .page-hero p  { color: rgba(255,255,255,0.8); font-size: 1.05rem; }
+
+    /* Filters */
+    .filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 48px;
+    }
+    .filter-btn {
+      padding: 8px 20px;
+      border: 2px solid #dde6ea;
+      background: var(--white);
+      border-radius: 50px;
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      color: var(--mid);
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: var(--white);
+    }
+
+    /* Destination cards */
+    .dest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .dest-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: var(--white);
+      transition: var(--transition);
+    }
+    .dest-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(10,110,138,0.2); }
+    .dest-card[data-hidden="true"] { display: none; }
+
+    .dest-img {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4.5rem;
+      position: relative;
+    }
+    .dest-region {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(0,0,0,0.45);
+      backdrop-filter: blur(4px);
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+    .dest-type {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .dest-body { padding: 22px; }
+    .dest-body h3 { margin-bottom: 6px; font-size: 1.15rem; }
+    .dest-body .country { font-size: 0.82rem; color: var(--primary); font-weight: 600; margin-bottom: 10px; }
+    .dest-body p { font-size: 0.88rem; margin-bottom: 14px; }
+    .dest-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 14px;
+      border-top: 1px solid var(--light);
+    }
+    .dest-meta .info { font-size: 0.82rem; color: var(--mid); }
+    .dest-meta .info strong { color: var(--dark); }
+    .dest-price { font-family: var(--font-display); color: var(--primary); font-size: 1.2rem; font-weight: 700; }
+    .dest-price small { font-family: var(--font-body); font-size: 0.75rem; color: var(--mid); font-weight: 400; }
+    .inclusions { margin-top: 12px; }
+    .inclusions h4 { font-size: 0.82rem; font-weight: 600; margin-bottom: 6px; color: var(--dark); }
+    .inclusions ul { display: flex; flex-wrap: wrap; gap: 6px; }
+    .inclusions ul li {
+      font-size: 0.76rem;
+      background: var(--light);
+      color: var(--primary);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    @media (max-width: 1024px) { .dest-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 640px)  { .dest-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="container">
+      <a class="nav-logo" href="../index.html">Sydney<span>Global</span></a>
+      <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="destinations.html" class="active">Destinations</a></li>
+        <li><a href="tours.html">Tours</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="container">
+      <h1>Our packages</h1>
+      <p>Explore our hand-picked destinations across several countries.</p>
+    </div>
+  </div>
+
+  <!-- DESTINATIONS -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Filter Buttons -->
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All Destinations</button>
+        <button class="filter-btn" data-filter="asia">Asia</button>
+        <button class="filter-btn" data-filter="europe">Europe</button>
+        <button class="filter-btn" data-filter="pacific">Pacific</button>
+        <button class="filter-btn" data-filter="middle-east">Middle East</button>
+      </div>
+
+      <div class="dest-grid" id="destGrid">
+
+        <!-- Bali -->
+<div class="dest-card" data-region="asia" data-type="beach">
+  <div class="dest-img" style="background-image:url('../img/bali.avif'); background-size:cover; background-position:center;">
+    
+    <div class="dest-region">Asia</div>
+    <div class="dest-type">Beach</div>
+  </div>
+  <div class="dest-body">
+    <h3>Bali Paradise Escape</h3>
+    <div class="country">🇮🇩 Indonesia</div>
+    <p>Tropical paradise with stunning rice terraces, ancient temples, surf beaches, and vibrant nightlife.</p>
+    <div class="inclusions">
+      <h4>Inclusions:</h4>
+      <ul>
+        <li>✈️ Return Flights</li>
+        <li>🏨 Resort (7 nights)</li>
+        <li>🍽️ Breakfast Daily</li>
+        <li>🚐 Airport Transfer</li>
+      </ul>
+    </div>
+    <div class="dest-meta">
+      <div class="info"><strong>7 nights</strong><br>Per person, twin share</div>
+      <div>
+        <div class="dest-price">From $1,299 <small>/ person</small></div>
+        <a href="contact.html" class="btn btn-teal" style="margin-top:8px;padding:8px 18px;font-size:0.82rem;">Book Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Paris -->
+<div class="dest-card" data-region="europe" data-type="culture">
+  <div class="dest-img" style="background-image:url('../img/paris.jpg'); background-size:cover; background-position:center;">
+    
+    <div class="dest-region">Europe</div>
+    <div class="dest-type">Luxury</div>
+  </div>
+  <div class="dest-body">
+    <h3>Paris Romantic Getaway</h3>
+    <div class="country">🇫🇷 France</div>
+    <p>The city of love, world-class cuisine, iconic art museums, and the magnificent Eiffel Tower.</p>
+    <div class="inclusions">
+      <h4>Inclusions:</h4>
+      <ul>
+        <li>✈️ Return Flights</li>
+        <li>🏨 5-Star Hotel (8 nights)</li>
+        <li>🍽️ Breakfast & Dinner</li>
+        <li>🎫 Museum Passes</li>
+      </ul>
+    </div>
+    <div class="dest-meta">
+      <div class="info"><strong>8 nights</strong><br>Per person, twin share</div>
+      <div>
+        <div class="dest-price">From $2,800 <small>/ person</small></div>
+        <a href="contact.html" class="btn btn-teal" style="margin-top:8px;padding:8px 18px;font-size:0.82rem;">Book Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tokyo -->
+<div class="dest-card" data-region="asia" data-type="culture">
+  <div class="dest-img" style="background-image:url('../img/tokyo\ city.jpg'); background-size:cover; background-position:center;">
+    
+    <div class="dest-region">Asia</div>
+    <div class="dest-type">Culture</div>
+  </div>
+  <div class="dest-body">
+    <h3>Tokyo City Experience</h3>
+    <div class="country">🇯🇵 Japan</div>
+    <p>A thrilling blend of ultra-modern technology and ancient traditions — sushi, shrines and skyscrapers.</p>
+    <div class="inclusions">
+      <h4>Inclusions:</h4>
+      <ul>
+        <li>✈️ Return Flights</li>
+        <li>🏨 Hotel (9 nights)</li>
+        <li>🚅 JR Rail Pass</li>
+        <li>🎌 Cultural Tour</li>
+      </ul>
+    </div>
+    <div class="dest-meta">
+      <div class="info"><strong>9 nights</strong><br>Per person, twin share</div>
+      <div>
+        <div class="dest-price">From $2,500 <small>/ person</small></div>
+        <a href="contact.html" class="btn btn-teal" style="margin-top:8px;padding:8px 18px;font-size:0.82rem;">Book Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- New Zealand -->
+<div class="dest-card" data-region="pacific" data-type="adventure">
+  <div class="dest-img" style="background-image:url('../img/nz\ adventure.jpg'); background-size:cover; background-position:center;">
+    
+    <div class="dest-region">Pacific</div>
+    <div class="dest-type">Adventure</div>
+  </div>
+  <div class="dest-body">
+    <h3>New Zealand Adventure</h3>
+    <div class="country">🇳🇿 New Zealand</div>
+    <p>Epic landscapes — from Milford Sound's fjords to Queenstown's thrills. Perfect for families and adventurers.</p>
+    <div class="inclusions">
+      <h4>Inclusions:</h4>
+      <ul>
+        <li>✈️ Return Flights</li>
+        <li>🏨 Hotel (10 nights)</li>
+        <li>🚐 Guided Tours</li>
+        <li>🧒 Kids Under 12 FREE</li>
+      </ul>
+    </div>
+    <div class="dest-meta">
+      <div class="info"><strong>10 nights</strong><br>Per person, twin share</div>
+      <div>
+        <div class="dest-price">From $2,100 <small>/ person</small></div>
+        <a href="contact.html" class="btn btn-teal" style="margin-top:8px;padding:8px 18px;font-size:0.82rem;">Book Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Dubai -->
+<div class="dest-card" data-region="middle-east" data-type="luxury">
+  <div class="dest-img" style="background-image:url('../img/dubai.jpg'); background-size:cover; background-position:center;">
+    
+    <div class="dest-region">Middle East</div>
+    <div class="dest-type">Luxury</div>
+  </div>
+  <div class="dest-body">
+    <h3>Dubai Luxury Experience</h3>
+    <div class="country">🇦🇪 United Arab Emirates</div>
+    <p>Iconic skyline, desert safaris, world-class shopping malls, and unparalleled luxury resorts.</p>
+    <div class="inclusions">
+      <h4>Inclusions:</h4>
+      <ul>
+        <li>✈️ Return Flights</li>
+        <li>🏨 5-Star Hotel (6 nights)</li>
+        <li>🐪 Desert Safari</li>
+        <li>🛥️ Dhow Cruise</li>
+      </ul>
+    </div>
+    <div class="dest-meta">
+      <div class="info"><strong>6 nights</strong><br>Per person, twin share</div>
+      <div>
+        <div class="dest-price">From $1,800 <small>/ person</small></div>
+        <a href="contact.html" class="btn btn-teal" style="margin-top:8px;padding:8px 18px;font-size:0.82rem;">Book Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Maldives -->
+<div class="dest-card" data-region="asia" data-type="beach">
+  <div class="dest-img" style="background-image:url('../img/maldives.jpg'); background-size:cover; background-position:center;">
+    
+    <div class="dest-region">Asia</div>
+    <div class="dest-type">Beach</div>
+  </div>
+  <div class="dest-body">
+    <h3>Maldives Island Retreat</h3>
+    <div class="country">🇲🇻 Maldives</div>
+    <p>Crystal-clear lagoons, overwater bungalows, and pristine coral reefs. The ultimate island escape.</p>
+    <div class="inclusions">
+      <h4>Inclusions:</h4>
+      <ul>
+        <li>✈️ Return Flights</li>
+        <li>🏨 Overwater Villa (7 nights)</li>
+        <li>🍽️ All-Inclusive</li>
+        <li>🤿 Snorkelling Tour</li>
+      </ul>
+    </div>
+    <div class="dest-meta">
+      <div class="info"><strong>7 nights</strong><br>Per person, twin share</div>
+      <div>
+        <div class="dest-price">From $3,500 <small>/ person</small></div>
+        <a href="contact.html" class="btn btn-teal" style="margin-top:8px;padding:8px 18px;font-size:0.82rem;">Book Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /dest-grid -->
+</div>
+</section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">Sydney<span style="color:var(--accent)">Global</span></div>
+          <p>Turning travel dreams into lifelong memories since 2010.</p>
+        </div>
+        <div><h4>Quick Links</h4><ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="tours.html">Tours</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul></div>
+        <div><h4>Popular Trips</h4><ul>
+          <li><a href="#">Bali Escape</a></li>
+          <li><a href="#">Paris Romance</a></li>
+          <li><a href="#">Tokyo Adventure</a></li>
+          <li><a href="#">Dubai Luxury</a></li>
+        </ul></div>
+        <div><h4>Contact</h4><ul>
+          <li><a href="#">📍 200 George St, Sydney</a></li>
+          <li><a href="#">📞 (02) 9123 4567</a></li>
+          <li><a href="#">📧 hello@sydneyglobaladventures.com.au</a></li>
+        </ul></div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 Sydney Global Adventures · ITS106 Group Project T1 2026</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // Filter functionality
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const cards      = document.querySelectorAll('.dest-card');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.region === filter) {
+            card.removeAttribute('data-hidden');
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

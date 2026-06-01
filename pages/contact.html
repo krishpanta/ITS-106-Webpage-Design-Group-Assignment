@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact & Booking – Sydney Global Adventures</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg,#064f65,#0a6e8a);
+      color:var(--white);
+      padding:80px 0 60px;
+      text-align:center;
+    }
+    .page-hero h1{color:var(--white);margin-bottom:12px;}
+    .page-hero p{color:rgba(255,255,255,.8);}
+
+    /* Contact Info */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.8fr;
+      gap: 52px;
+      align-items: start;
+    }
+    .contact-info h2 { margin-bottom:28px; }
+    .info-items { display:flex; flex-direction:column; gap:20px; margin-bottom:36px; }
+    .info-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .info-icon {
+      width: 48px; height: 48px;
+      background: var(--primary);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .info-text h4 { font-size:0.9rem; margin-bottom:4px; font-family:var(--font-body); font-weight:600; }
+    .info-text p  { font-size:0.85rem; }
+
+    /* Form */
+    .booking-form-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 40px;
+    }
+    .booking-form-card h2 { margin-bottom:8px; }
+    .booking-form-card .sub { font-size:0.88rem; margin-bottom:28px; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* Booking success */
+    .success-box {
+      display: none;
+      background: #e8f7f0;
+      border: 2px solid #2ecc71;
+      border-radius: var(--radius);
+      padding: 28px;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .success-box.show { display: block; animation: fadeUp 0.4s ease; }
+    .success-box .tick { font-size: 3rem; margin-bottom: 10px; }
+    .success-box h3 { color: #1a7a4a; margin-bottom:6px; }
+    .success-box p  { font-size: 0.88rem; color: #2d5a3d; }
+
+    /* Submissions list */
+    .submissions-section { margin-top: 40px; }
+    .submissions-section h3 { margin-bottom: 16px; font-size: 1rem; font-family:var(--font-body); font-weight:600; }
+    .submission-list { display:flex; flex-direction:column; gap:12px; }
+    .submission-item {
+      background: var(--light);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 0.85rem;
+      border-left: 3px solid var(--primary);
+    }
+    .submission-item strong { color:var(--dark); }
+    .submission-item .meta { color: var(--mid); margin-top:4px; font-size:0.78rem; }
+
+    /* Map placeholder */
+    .map-placeholder {
+      background: linear-gradient(135deg,var(--light),#dce9ef);
+      border-radius: var(--radius);
+      height: 220px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      margin-top: 28px;
+      border: 2px dashed #b0c8d4;
+    }
+    .map-placeholder p { font-size:0.82rem; color:var(--mid); margin-top:8px; }
+
+    @keyframes fadeUp {
+      from{opacity:0;transform:translateY(16px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+
+    @media(max-width:768px){
+      .contact-grid { grid-template-columns:1fr; }
+      .form-row { grid-template-columns:1fr; }
+      .booking-form-card { padding:24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+      <a class="nav-logo" href="../index.html">Sydney<span>Global</span></a>
+      <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="tours.html">Tours</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html" class="nav-cta active">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <h1>Contact & Book Your Trip</h1>
+      <p>Ready to travel? Fill in the form below and we'll get back to you within 24 hours.</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- Left: Contact Info -->
+        <div class="contact-info">
+          <h2>Get In Touch</h2>
+          <div class="info-items">
+            <div class="info-item">
+              <div class="info-icon">📍</div>
+              <div class="info-text">
+                <h4>Office Address</h4>
+                <p>Level 5, 200 George Street<br>Sydney NSW 2000, Australia</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">📞</div>
+              <div class="info-text">
+                <h4>Phone</h4>
+                <p>(02) 9123 4567</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">📧</div>
+              <div class="info-text">
+                <h4>Email</h4>
+                <p>hello@sydneyglobaladventures.com.au</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">🕐</div>
+              <div class="info-text">
+                <h4>Business Hours</h4>
+                <p>Monday–Friday: 9:00am – 6:00pm<br>Saturday: 10:00am – 3:00pm<br>Sunday: Closed</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map placeholder -->
+          <iframe 
+  src="https://www.google.com/maps?q=200+George+Street+Sydney+NSW+2000&output=embed" 
+  width="100%" 
+  height="220" 
+  style="border:0; border-radius:12px;" 
+  allowfullscreen 
+  loading="lazy">
+</iframe>
+          <!-- To add a real Google Map, replace the above div with:
+          <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="220" style="border:0;border-radius:12px" allowfullscreen loading="lazy"></iframe>
+          -->
+        </div>
+
+        <!-- Right: Booking Form -->
+        <div class="booking-form-card">
+          <h2>Booking Enquiry Form</h2>
+          <p class="sub">Tell us about your dream trip and our consultants will customise a package just for you.</p>
+
+          <form id="bookingForm" novalidate>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName">First Name *</label>
+                <input type="text" id="firstName" name="firstName" placeholder="e.g. Crispy" />
+                <div class="error-msg" id="err-firstName">Please enter your first name.</div>
+              </div>
+              <div class="form-group">
+                <label for="lastName">Last Name *</label>
+                <input type="text" id="lastName" name="lastName" placeholder="e.g. Bacon" />
+                <div class="error-msg" id="err-lastName">Please enter your last name.</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" placeholder="your@example.com" />
+              <div class="error-msg" id="err-email">Please enter a valid email address.</div>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder="e.g. 0400 123 456" />
+            </div>
+
+            <div class="form-group">
+              <label for="destination">Preferred Destination *</label>
+              <select id="destination" name="destination">
+                <option value="">-- Select a destination --</option>
+                <option>Bali, Indonesia</option>
+                <option>Paris, France</option>
+                <option>Tokyo, Japan</option>
+                <option>New Zealand</option>
+                <option>Dubai, UAE</option>
+                <option>Maldives</option>
+                <option>Other (please specify in message)</option>
+              </select>
+              <div class="error-msg" id="err-destination">Please select a destination.</div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="travelFrom">Travel From (Date) *</label>
+                <input type="date" id="travelFrom" name="travelFrom" />
+                <div class="error-msg" id="err-travelFrom">Please select a departure date.</div>
+              </div>
+              <div class="form-group">
+                <label for="travelTo">Return Date</label>
+                <input type="date" id="travelTo" name="travelTo" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="travellers">Number of Travellers</label>
+              <select id="travellers" name="travellers">
+                <option>1 person</option>
+                <option>2 people</option>
+                <option>3–4 people</option>
+                <option>5–10 people</option>
+                <option>10+ people (group)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message / Special Requests *</label>
+              <textarea id="message" name="message" placeholder="Tell us more about your trip — budget, preferences, special occasions..."></textarea>
+              <div class="error-msg" id="err-message">Please enter a message (at least 10 characters).</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;padding:14px;font-size:1rem;">
+              ✈️ Submit Booking Enquiry
+            </button>
+
+          </form>
+
+          <!-- Success message -->
+          <div class="success-box" id="successBox">
+            <div class="tick">✅</div>
+            <h3>Enquiry Submitted!</h3>
+            <p>Thank you! One of our consultants will contact you within 24 hours to discuss your dream trip.</p>
+          </div>
+
+          <!-- Submitted Entries Display -->
+          <div class="submissions-section" id="submissionsSection" style="display:none">
+            <h3>Recent Enquiries (this session)</h3>
+            <div class="submission-list" id="submissionList"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">Sydney<span style="color:var(--accent)">Global</span></div>
+          <p>Turning travel dreams into lifelong memories since 2010.</p>
+        </div>
+        <div><h4>Quick Links</h4><ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="tours.html">Tours</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul></div>
+        <div><h4>Popular Trips</h4><ul>
+          <li><a href="#">Bali Escape</a></li>
+          <li><a href="#">Paris Romance</a></li>
+          <li><a href="#">Tokyo Adventure</a></li>
+          <li><a href="#">NZ Family Tour</a></li>
+        </ul></div>
+        <div><h4>Contact</h4><ul>
+          <li><a href="#">📍 200 George St, Sydney</a></li>
+          <li><a href="#">📞 (02) 9123 4567</a></li>
+          <li><a href="#">📧 hello@sydneyglobaladventures.com.au</a></li>
+        </ul></div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 Sydney Global Adventures · ITS106 Group Project T1 2026</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // ── FORM VALIDATION & SUBMISSION ──
+    const form         = document.getElementById('bookingForm');
+    const successBox   = document.getElementById('successBox');
+    const subSection   = document.getElementById('submissionsSection');
+    const subList      = document.getElementById('submissionList');
+    const submissions  = [];
+
+    // Helper: show/hide error
+    function setError(fieldId, errId, condition) {
+      const field = document.getElementById(fieldId);
+      const err   = document.getElementById(errId);
+      if (condition) {
+        field.classList.add('invalid');
+        err.classList.add('visible');
+        return false;
+      } else {
+        field.classList.remove('invalid');
+        err.classList.remove('visible');
+        return true;
+      }
+    }
+
+    // Email regex
+    function isValidEmail(val) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+    }
+
+    // Validate all fields
+    function validate() {
+      let ok = true;
+      ok = setError('firstName', 'err-firstName', !document.getElementById('firstName').value.trim()) && ok;
+      ok = setError('lastName',  'err-lastName',  !document.getElementById('lastName').value.trim())  && ok;
+      ok = setError('email',     'err-email',     !isValidEmail(document.getElementById('email').value.trim())) && ok;
+      ok = setError('destination','err-destination', !document.getElementById('destination').value)   && ok;
+      ok = setError('travelFrom','err-travelFrom', !document.getElementById('travelFrom').value)       && ok;
+      ok = setError('message',   'err-message',   document.getElementById('message').value.trim().length < 10)  && ok;
+      return ok;
+    }
+
+    // Live validation on blur
+    ['firstName','lastName','email','destination','travelFrom','message'].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener('blur', validate);
+      el.addEventListener('input', () => {
+        el.classList.remove('invalid');
+        document.getElementById('err-' + id)?.classList.remove('visible');
+      });
+    });
+
+    // Submit
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      if (!validate()) return;
+
+      const entry = {
+        name:        document.getElementById('firstName').value.trim() + ' ' + document.getElementById('lastName').value.trim(),
+        email:       document.getElementById('email').value.trim(),
+        destination: document.getElementById('destination').value,
+        travelFrom:  document.getElementById('travelFrom').value,
+        travellers:  document.getElementById('travellers').value,
+        message:     document.getElementById('message').value.trim(),
+        time:        new Date().toLocaleString('en-AU')
+      };
+
+      submissions.push(entry);
+
+      // Show success
+      successBox.classList.add('show');
+      form.style.display = 'none';
+
+      // Display submission
+      subSection.style.display = 'block';
+      const div = document.createElement('div');
+      div.className = 'submission-item';
+      div.innerHTML = `
+        <strong>${entry.name}</strong> — ${entry.destination}<br>
+        ✈️ Departing: ${entry.travelFrom} &nbsp;|&nbsp; 👥 ${entry.travellers}
+        <div class="meta">📧 ${entry.email} &nbsp;·&nbsp; Submitted: ${entry.time}</div>
+      `;
+      subList.appendChild(div);
+    });
+  </script>
+</body>
+</html>

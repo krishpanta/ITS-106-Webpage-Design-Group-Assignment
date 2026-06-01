@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tours & Experiences – Sydney Global Adventures</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg,#064f65,#0a6e8a);
+      color:var(--white);
+      padding:80px 0 60px;
+      text-align:center;
+    }
+    .page-hero h1{color:var(--white);margin-bottom:12px;}
+    .page-hero p{color:rgba(255,255,255,.8);font-size:1.05rem;}
+
+    /* Tour category cards */
+    .tour-section { padding: 72px 0; }
+    .tour-section:nth-child(even) { background: var(--light); }
+
+    .tour-block {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:56px;
+      align-items:center;
+    }
+    .tour-block.reverse { direction: rtl; }
+    .tour-block.reverse > * { direction: ltr; }
+
+    .tour-visual {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      height: 340px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6rem;
+      position: relative;
+    }
+    .tour-icon-badge {
+      position:absolute;
+      bottom:20px; left:20px;
+      background:rgba(255,255,255,0.15);
+      backdrop-filter:blur(6px);
+      border:1px solid rgba(255,255,255,0.3);
+      color:var(--white);
+      padding:8px 16px;
+      border-radius:50px;
+      font-size:0.82rem;
+      font-weight:600;
+    }
+
+    .tour-content { }
+    .tour-tag {
+      display:inline-block;
+      background:var(--accent);
+      color:var(--white);
+      font-size:0.72rem;
+      font-weight:700;
+      letter-spacing:0.1em;
+      text-transform:uppercase;
+      padding:4px 14px;
+      border-radius:4px;
+      margin-bottom:16px;
+    }
+    .tour-content h2 { margin-bottom:14px; }
+    .tour-content p  { margin-bottom:20px; }
+
+    .highlights {
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-bottom:24px;
+    }
+    .highlight-item {
+      display:flex;
+      align-items:flex-start;
+      gap:12px;
+      background:var(--white);
+      padding:12px 16px;
+      border-radius:8px;
+      border-left:3px solid var(--primary);
+    }
+    .tour-section:nth-child(even) .highlight-item {
+      background: var(--white);
+    }
+    .hi-icon { font-size:1.2rem; flex-shrink:0; }
+    .hi-text { font-size:0.88rem; color:var(--dark); }
+    .hi-text strong { display:block; font-weight:600; margin-bottom:2px; }
+
+    .tour-meta {
+      display:flex;
+      gap:24px;
+      margin-top:8px;
+    }
+    .tour-meta-item { text-align:center; }
+    .tour-meta-item .val {
+      font-family:var(--font-display);
+      font-size:1.2rem;
+      color:var(--primary);
+      font-weight:700;
+    }
+    .tour-meta-item .key { font-size:0.75rem; color:var(--mid); }
+
+    @media(max-width:768px){
+      .tour-block, .tour-block.reverse { grid-template-columns:1fr; direction:ltr; gap:28px; }
+      .tour-visual { height:220px; font-size:4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+      <a class="nav-logo" href="../index.html">Sydney<span>Global</span></a>
+      <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="tours.html" class="active">Tours</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <h1>Tours & Experiences</h1>
+      <p>Five unique ways to explore the world — choose the adventure that speaks to you.</p>
+    </div>
+  </div>
+
+  <!-- 1. Adventure Tours -->
+  <section class="tour-section">
+    <div class="container">
+      <div class="tour-block">
+        <div class="tour-visual" style="background-image:url('../img/adventure.jpg'); background-size:cover; background-position:center;">
+          
+          <div class="tour-icon-badge">🧗 Thrill-Seekers Welcome</div>
+        </div>
+        <div class="tour-content">
+          <div class="tour-tag">01 · Adventure</div>
+          <h2>Adventure Tours</h2>
+          <p>Push your limits in the world's most spectacular landscapes. Perfect for thrill-seekers who want more than a postcard.</p>
+          <div class="highlights">
+            <div class="highlight-item">
+              <div class="hi-icon">🏔️</div>
+              <div class="hi-text"><strong>Himalayan Trekking – Nepal</strong>Guided multi-day treks through Annapurna and Everest Base Camp routes.</div>
+            </div>
+            <div class="highlight-item">
+              <div class="hi-icon">🪂</div>
+              <div class="hi-text"><strong>Skydiving & Bungee – New Zealand</strong>Queenstown's iconic jumps with stunning Southern Alps backdrop.</div>
+            </div>
+            <div class="highlight-item">
+              <div class="hi-icon">🌊</div>
+              <div class="hi-text"><strong>Whitewater Rafting – Bali</strong>Navigate the Ayung River through jungle gorges and rice paddies.</div>
+            </div>
+          </div>
+          <div class="tour-meta">
+            <div class="tour-meta-item"><div class="val">7–14</div><div class="key">Days</div></div>
+            <div class="tour-meta-item"><div class="val">From $1,800</div><div class="key">Per person</div></div>
+            <div class="tour-meta-item"><div class="val">6–16</div><div class="key">Group size</div></div>
+          </div>
+          <a href="contact.html" class="btn btn-teal" style="margin-top:24px">Book This Tour</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. Cultural Tours -->
+  <section class="tour-section">
+    <div class="container">
+      <div class="tour-block reverse">
+        <div class="tour-visual" style="background-image:url('../img/cultural.jpg'); background-size:cover; background-position:center;">
+          
+          <div class="tour-icon-badge">🎎 Immersive Local Experiences</div>
+        </div>
+        <div class="tour-content">
+          <div class="tour-tag">02 · Cultural</div>
+          <h2>Cultural Tours</h2>
+          <p>Dive deep into local traditions, cuisine, and history. Connect with communities in a meaningful and respectful way.</p>
+          <div class="highlights">
+            <div class="highlight-item">
+              <div class="hi-icon">🎌</div>
+              <div class="hi-text"><strong>Japanese Tea Ceremonies – Kyoto</strong>Participate in authentic rituals with local tea masters in historic teahouses.</div>
+            </div>
+            <div class="highlight-item">
+              <div class="hi-icon">🍜</div>
+              <div class="hi-text"><strong>Cooking Classes – Bali & Thailand</strong>Learn to prepare local dishes with ingredients from morning market visits.</div>
+            </div>
+            <div class="highlight-item">
+              <div class="hi-icon">🕌</div>
+              <div class="hi-text"><strong>Temple & Heritage Walks – India</strong>Guided exploration of Rajasthan forts, Varanasi ghats, and Taj Mahal.</div>
+            </div>
+          </div>
+          <div class="tour-meta">
+            <div class="tour-meta-item"><div class="val">8–12</div><div class="key">Days</div></div>
+            <div class="tour-meta-item"><div class="val">From $2,200</div><div class="key">Per person</div></div>
+            <div class="tour-meta-item"><div class="val">8–20</div><div class="key">Group size</div></div>
+          </div>
+          <a href="contact.html" class="btn btn-teal" style="margin-top:24px">Book This Tour</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Luxury Holidays -->
+  <section class="tour-section">
+    <div class="container">
+      <div class="tour-block">
+        <div class="tour-visual" style="background-image:url('../img/luxury.jpg'); background-size:cover; background-position:center;">
+          
+          <div class="tour-icon-badge">⭐ 5-Star Everything</div>
+        </div>
+        <div class="tour-content">
+          <div class="tour-tag">03 · Luxury</div>
+          <h2>Luxury Holidays</h2>
+          <p>Indulge in the finest hotels, private transfers, Michelin-starred dining, and curated experiences. You deserve the best.</p>
+          <div class="highlights">
+            <div class="highlight-item">
+              <div class="hi-icon">🏨</div>
+              <div class="hi-text"><strong>Maldives Overwater Villas</strong>Private villas above turquoise lagoons with personal butler service.</div>
+            </div>
+            <div class="highlight-item">
+              <div class="hi-icon">🍾</div>
+              <div class="hi-text"><strong>Paris Private Wine & Dine</strong>Exclusive restaurant reservations, sommelier-guided tastings, and chef's table experiences.</div>
+            </div>
+            <div class="highlight-item">
+              <div class="hi-icon">🚁</div>
+              <div class="hi-text"><strong>Dubai Helicopter & Desert</strong>Helicopter city tours followed by luxury desert glamping under the stars.</div>
+            </div>
+          </div>
+          <div class="tour-meta">
+            <div class="tour-meta-item"><div class="val">6–10</div><div class="key">Days</div></div>
+            <div class="tour-meta-item"><div class="val">From $4,500</div><div class="key">Per person</div></div>
+            <div class="tour-meta-item"><div class="val">2–8</div><div class="key">Group size</div></div>
+          </div>
+          <a href="contact.html" class="btn btn-teal" style="margin-top:24px">Book This Tour</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Family Packages -->
+  <section class="tour-section">
+    <div class="container">
+      <div class="tour-block reverse">
+        <div class="tour-visual" style="background-image:url('../img/family.jpg'); background-size:cover; background-position:center;">
+          x
+          <div class="tour-icon-badge">🧒 Kids Eat & Play FREE</div>
+        </div>
+        <div class="tour-content">
+          <div class="tour-tag">04 · Family</div>
+          <h2>Family Packages</h2>
+          <p>Stress-free travel designed for families with kids. Age-appropriate activities, flexible scheduling, and child-friendly accommodation.</p>
+          <div class="highlights">
+            <div class="highlight-item">
+              <div class="hi-icon">🎡</div>
+              <div class="hi-text"><strong>Tokyo DisneySea & Universal</strong>Full-day passes with skip-the-line access and family dining packages.</div>
+            </div>
+            <div class="highlight-item">
+              <div class="hi-icon">🐠</div>
+              <div class="hi-text"><strong>Great Barrier Reef – Cairns</strong>Family snorkelling, glass-bottom boat tours, and underwater observatory.</div>
+            </div>
+            <div class="highlight-item">
+              <div class="hi-icon">🐘</div>
+              <div class="hi-text"><strong>Bali Elephant Sanctuary</strong>Ethical elephant care experience with guided jungle trek and rice field walk.</div>
+            </div>
+          </div>
+          <div class="tour-meta">
+            <div class="tour-meta-item"><div class="val">8–12</div><div class="key">Days</div></div>
+            <div class="tour-meta-item"><div class="val">From $1,600</div><div class="key">Per adult</div></div>
+            <div class="tour-meta-item"><div class="val">Family</div><div class="key">Groups</div></div>
+          </div>
+          <a href="contact.html" class="btn btn-teal" style="margin-top:24px">Book This Tour</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Cruise Trips -->
+  <section class="tour-section">
+    <div class="container">
+      <div class="tour-block">
+        <div class="tour-visual" style="background-image:url('../img/cruise.jpg'); background-size:cover; background-position:center;">
+          
+          <div class="tour-icon-badge">⚓ All-Inclusive at Sea</div>
+        </div>
+        <div class="tour-content">
+          <div class="tour-tag">05 · Cruise</div>
+          <h2>Cruise Trips</h2>
+          <p>Experience the luxury of ocean travel — multiple destinations in one itinerary, with entertainment, dining, and adventure on board.</p>
+          <div class="highlights">
+            <div class="highlight-item">
+              <div class="hi-icon">🌊</div>
+              <div class="hi-text"><strong>Mediterranean Cruise – 14 Nights</strong>Barcelona → Rome → Athens → Dubrovnik → Venice. Shore excursions included.</div>
+            </div>
+            <div class="highlight-item">
+              <div class="hi-icon">🏝️</div>
+              <div class="hi-text"><strong>Pacific Islands Cruise – 10 Nights</strong>Sydney → Fiji → Vanuatu → New Caledonia. Tropical paradise hopping.</div>
+            </div>
+            <div class="highlight-item">
+              <div class="hi-icon">🎭</div>
+              <div class="hi-text"><strong>On-Board Entertainment</strong>Live shows, fine dining, spas, pools, and kids' clubs — all included.</div>
+            </div>
+          </div>
+          <div class="tour-meta">
+            <div class="tour-meta-item"><div class="val">10–14</div><div class="key">Nights</div></div>
+            <div class="tour-meta-item"><div class="val">From $2,600</div><div class="key">Per person</div></div>
+            <div class="tour-meta-item"><div class="val">All</div><div class="key">Ages welcome</div></div>
+          </div>
+          <a href="contact.html" class="btn btn-teal" style="margin-top:24px">Book This Tour</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">Sydney<span style="color:var(--accent)">Global</span></div>
+          <p>Turning travel dreams into lifelong memories since 2010.</p>
+        </div>
+        <div><h4>Quick Links</h4><ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="tours.html">Tours</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul></div>
+        <div><h4>Our Tours</h4><ul>
+          <li><a href="#">Adventure Tours</a></li>
+          <li><a href="#">Cultural Tours</a></li>
+          <li><a href="#">Luxury Holidays</a></li>
+          <li><a href="#">Cruise Trips</a></li>
+        </ul></div>
+        <div><h4>Contact</h4><ul>
+          <li><a href="#">📍 200 George St, Sydney</a></li>
+          <li><a href="#">📞 (02) 9123 4567</a></li>
+          <li><a href="#">📧 hello@sydneyglobaladventures.com.au</a></li>
+        </ul></div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 Sydney Global Adventures · ITS106 Group Project T1 2026</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

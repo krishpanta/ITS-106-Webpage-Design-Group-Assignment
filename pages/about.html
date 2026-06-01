@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us – Sydney Global Adventures</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg,#064f65,#0a6e8a);
+      color:var(--white);
+      padding:80px 0 60px;
+      text-align:center;
+    }
+    .page-hero h1{color:var(--white);margin-bottom:12px;}
+    .page-hero p{color:rgba(255,255,255,.8);font-size:1.05rem;}
+
+    /* Mission */
+    .mission-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .mission-visual {
+      border-radius: var(--radius);
+      background-image: url('../img/about\ us.webp');
+      height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7rem;
+      box-shadow: var(--shadow);
+    }
+    .mission-text .label { color:var(--accent); font-size:0.78rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:10px; display:block; }
+    .mission-text h2 { margin-bottom:18px; }
+    .mission-text p { margin-bottom:16px; }
+    .values { display:flex; flex-direction:column; gap:12px; margin-top:24px; }
+    .value-item { display:flex; align-items:center; gap:12px; font-size:0.9rem; font-weight:500; color:var(--dark); }
+    .value-item .dot { width:10px; height:10px; border-radius:50%; background:var(--accent); flex-shrink:0; }
+
+    /* Timeline */
+    .timeline { position:relative; padding-left:40px; }
+    .timeline::before { content:''; position:absolute; left:8px; top:0; bottom:0; width:2px; background:var(--light); }
+    .tl-item { position:relative; margin-bottom:36px; }
+    .tl-dot { position:absolute; left:-36px; top:4px; width:16px; height:16px; border-radius:50%; background:var(--primary); border:3px solid var(--white); box-shadow:0 0 0 2px var(--primary); }
+    .tl-year { font-size:0.78rem; font-weight:700; color:var(--accent); letter-spacing:0.1em; margin-bottom:4px; }
+    .tl-item h4 { font-size:0.95rem; margin-bottom:4px; font-family:var(--font-body); font-weight:600; }
+    .tl-item p { font-size:0.85rem; }
+
+    /* Team */
+    .team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+    .team-card {
+      background:var(--white);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      text-align:center;
+      transition:var(--transition);
+    }
+    .team-card:hover { transform:translateY(-5px); box-shadow:0 16px 40px rgba(10,110,138,0.18); }
+    .team-avatar {
+      height:180px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:5rem;
+    }
+    .team-info { padding:22px; }
+    .team-info h3 { font-size:1.05rem; margin-bottom:4px; }
+    .team-role { font-size:0.82rem; color:var(--primary); font-weight:600; margin-bottom:10px; }
+    .team-tags { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-bottom:12px; }
+    .team-tags span { font-size:0.72rem; background:var(--light); color:var(--mid); padding:3px 10px; border-radius:20px; }
+    .team-exp { font-size:0.82rem; color:var(--mid); }
+
+    /* Values boxes */
+    .values-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .val-box {
+      background:var(--white);
+      border-radius:var(--radius);
+      padding:32px 24px;
+      box-shadow:var(--shadow);
+      text-align:center;
+    }
+    .val-icon { font-size:2.2rem; margin-bottom:12px; }
+    .val-box h3 { font-size:1rem; margin-bottom:8px; }
+    .val-box p  { font-size:0.85rem; }
+
+    @media(max-width:768px){
+      .mission-block { grid-template-columns:1fr; gap:32px; }
+      .mission-visual { height:200px; font-size:5rem; }
+      .team-grid, .values-grid { grid-template-columns:1fr; }
+    }
+    @media(max-width:1024px){ .team-grid { grid-template-columns:repeat(2,1fr); } .values-grid { grid-template-columns:repeat(2,1fr); } }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+      <a class="nav-logo" href="../index.html">Sydney<span>Global</span></a>
+      <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="destinations.html">Destinations</a></li>
+        <li><a href="tours.html">Tours</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+        <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="page-hero">
+    <div class="container">
+      <h1>About Sydney Global Adventures</h1>
+      <p>Our story, our team, and the values that make us Australia's trusted travel partner.</p>
+    </div>
+  </div>
+
+ <!-- Mission -->
+  <section class="section">
+    <div class="container">
+      <div class="mission-block">
+        <div class="mission-visual"></div>
+        <div class="mission-text">
+          <span class="label">About Us</span>
+          <h2>We aim to turn dream into destinations</h2>
+          <p>We are passionate travel enthusiasts who founded Sydney Global Adventures in 2010.The company was built on one simple principleTravel should be tranformative and also stress free.</p>
+          <p>We helped over 10,000 australians over 20 years from Bali's rice terraces to the markets of China. We are a team of experienced consultants who brings a deep expertise, personal experience on travelling and genuine passion to every itinerary we craft.</p>
+          <div class="values">
+            <div class="value-item"><div class="dot"></div>Customers Satisfaction  — every trip is personalised to their wants.</div>
+            <div class="value-item"><div class="dot"></div>Ethically Diverse — Our team supports local communities </div>
+            <div class="value-item"><div class="dot"></div> Transparency — No hidden fees on any ind of pricing</div>
+            <div class="value-item"><div class="dot"></div>All time support — support beofre arrival , during stay and after the departure</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <!-- Timeline -->
+  <section class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <div class="label">Our Timeline</div>
+        <h2>15 Years of Experience on Adventures</h2>
+      </div>
+      <div style="max-width:640px;margin:0 auto">
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2010</div>
+            <h4>Founded in the Western Sydney</h4>
+            <p>Krish Panta and Saugat Shrestha launch Sydney Global Adventures from a small office in the CBD with just 5 destinations.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2013</div>
+            <h4>Expanded to Asia-Pacific</h4>
+            <p>We added japan, Maldives and NZ to our portofolio. Our team grew to 10 consultants.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2016</div>
+            <h4>We launched the cruise division</h4>
+            <p>We partnered with major cruise lines to offer Pacific and Mediterranean voyages.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2019</div>
+            <h4>More than 10,000 happy constumers </h4>
+            <p>We have reached the major milestone in "NSW" at the Australian Travel Awards.</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2024</div>
+            <h4>Digital enovation and launch of the website</h4>
+            <p>Online booking service launched </p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-year">2026</div>
+            <h4>We have reached over 60 destination with over 12000 travellers in total</h4>
+            <p>We are still growing and we are commited to provide the best experience to australian travellers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="label">Meet the Team</div>
+        <h2>Your Expert Travel Consultants</h2>
+        <p>Experienced, passionate, and personally well-travelled — our team knows the world.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#667eea,#764ba2)">👩</div>
+          <div class="team-info">
+            <h3>Krish Panta</h3>
+            <div class="team-role">Co-Founder</div>
+            <div class="team-tags">
+              <span>AU Australian Specialist</span>
+              <span>Pacific and middle-east Expert</span>
+            </div>
+            <div class="team-exp">more than 15 years of experience</div>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#f093fb,#f5576c)">👨</div>
+          <div class="team-info">
+            <h3>Saugat Shrestha</h3>
+            <div class="team-role">Tour Planner and Co founder</div>
+            <div class="team-tags">
+              <span>Japan expert</span>
+              <span>Asia pacific</span>
+            </div>
+            <div class="team-exp">Fluent in Japanese and Mandarin</div>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-avatar" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">👩</div>
+          <div class="team-info">
+            <h3>Pranim Dangol</h3>
+            <div class="team-role">Holiday Expert</div>
+            <div class="team-tags">
+              <span>Cruise Expert</span>
+              <span>Europe Expert</span>
+            </div>
+            <div class="team-exp">10+ years experience · 30+ cruises taken </div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <div class="label">Our Values</div>
+        <h2>Our commitments</h2>
+      </div>
+      <div class="values-grid">
+        <div class="val-box">
+          <div class="val-icon">🤝🔍</div>
+          <h3>Our trust and Transparency</h3>
+          <p>No hidden fees, no fine print surprises.We tell our costumers what we actually do and what we dont do.</p>
+        </div>
+        <div class="val-box">
+          <div class="val-icon">🌱🚲</div>
+          <h3>Responsible Travel</h3>
+          <p>We have partners with eco-consious entrepreneur and support local communities at every destination.</p>
+        </div>
+        <div class="val-box">
+          <div class="val-icon">💛</div>
+          <h3>Genuine Care</h3>
+          <p>Your happiness is our success.We will give our best to give you the unforgettable trip. </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">Sydney<span style="color:var(--accent)">Global</span></div>
+          <p>We are turning life long dreams to the trip of your life since 2010.</p>
+        </div>
+        <div><h4>Links</h4><ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="destinations.html">Destinations</a></li>
+          <li><a href="tours.html">Tours</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul></div>
+        <div><h4>Popular Trips</h4><ul>
+          <li><a href="#">Bali Escape</a></li>
+          <li><a href="#">Paris Romance</a></li>
+          <li><a href="#">Tokyo Adventure</a></li>
+          <li><a href="#">NZ Family Tour</a></li>
+        </ul></div>
+        <div><h4>Contact</h4><ul>
+          <li><a href="#">📍 200 George St, Sydney</a></li>
+          <li><a href="#">📞 (02) 9123 4567</a></li>
+          <li><a href="#">📧 hello@sydneyglobaladventures.com.au</a></li>
+        </ul></div>
+      </div>
+      <div class="footer-bottom">&copy; 2026 Sydney Global Adventures · ITS106 Group Project T1 2026</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+  </script>
+</body>
+</html>

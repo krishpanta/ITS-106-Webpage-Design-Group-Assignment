@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sydney Global Adventures</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    
+    .hero {
+      position: relative;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: linear-gradient(135deg, #064f65 0%, #0a6e8a 50%, #0d8fac 100%);
+    }
+    .hero-slides {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    .hero-slide.active { opacity: 0.35; }
+    .hero-slide:nth-child(1) { background: linear-gradient(135deg, #06c, #03a9f4); }
+    .hero-slide:nth-child(2) { background: linear-gradient(135deg, #f093fb, #f5576c); }
+    .hero-slide:nth-child(3) { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+      color: var(--white);
+    }
+    
+    .hero h1 {
+      color: var(--white);
+      max-width: 680px;
+      margin-bottom: 20px;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.1rem;
+      max-width: 520px;
+      margin-bottom: 36px;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 64px;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.4s ease both;
+    }
+    .stat-item { text-align: left; }
+    .stat-item .num {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      color: var(--white);
+      font-weight: 700;
+    }
+    .stat-item .lbl {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 0.05em;
+    }
+    .hero-dots {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 2;
+    }
+    .hero-dots button {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.5);
+      background: transparent;
+      cursor: pointer;
+      transition: var(--transition);
+      padding: 0;
+    }
+    .hero-dots button.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      width: 28px;
+      border-radius: 5px;
+    }
+
+
+    /* ── FEATURED DEALS ── */
+    .deals-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .deal-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+    .deal-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(10,110,138,0.2); }
+    .deal-img {
+      height: 200px;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .deal-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(6,79,101,0.85) 0%, transparent 60%);
+    }
+    .deal-img .emoji { font-size: 3.5rem; position: absolute; top: 16px; right: 16px; }
+    .deal-tag {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 4px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .deal-body { background: var(--white); padding: 20px; }
+    .deal-body h3 { font-size: 1.1rem; margin-bottom: 4px; }
+    .deal-body .sub { font-size: 0.82rem; color: var(--mid); margin-bottom: 12px; }
+    .deal-price { font-family: var(--font-display); font-size: 1.4rem; color: var(--primary); font-weight: 700; }
+    .deal-price small { font-family: var(--font-body); font-size: 0.78rem; color: var(--mid); font-weight: 400; }
+
+    /* ── WHY US ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .why-item {
+      text-align: center;
+      padding: 32px 20px;
+      background: var(--white);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .why-item:hover { transform: translateY(-4px); }
+    .why-icon { font-size: 2.5rem; margin-bottom: 14px; }
+    .why-item h3 { font-size: 1rem; margin-bottom: 8px; }
+    .why-item p { font-size: 0.85rem; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 1024px) { .why-grid { grid-template-columns: repeat(2,1fr); } .deals-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 768px)  { .hero-stats { gap: 24px; } .deals-grid { grid-template-columns: 1fr; } .why-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px)  { .hero-stats { flex-direction: column; gap: 16px; } .hero-btns { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVIGATION ── -->
+  <nav class="navbar">
+    <div class="container">
+      <a class="nav-logo" href="../index.html">Sydney<span>Global</span></a>
+      <div class="nav-toggle" id="navToggle"><span></span><span></span><span></span></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="pages/destinations.html">Destinations</a></li>
+        <li><a href="pages/tours.html" class="active">Tours</a></li>
+        <li><a href="pages/about.html">About Us</a></li>
+        <li><a href="pages/contact.html" class="nav-cta">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-slides">
+      <div class="hero-slide active"></div>
+      <div class="hero-slide"></div>
+      <div class="hero-slide"></div>
+    </div>
+    <div class="hero-content">
+      <h1>Explore the world with our team<br>with <span>Confidence</span></h1>
+      <p>From Bali's beaches to Paris — Sydney Global Adventures makes your journey unforgettable.</p>
+      <div class="hero-btns">
+        <a href="pages/destinations.html" class="btn btn-primary">Explore Destinations</a>
+        <a href="pages/contact.html" class="btn btn-outline">Book a Trip</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="num">12,000+</div><div class="lbl">Happy Travellers</div></div>
+        <div class="stat-item"><div class="num">60+</div><div class="lbl">Destinations</div></div>
+        <div class="stat-item"><div class="num">15 Yrs</div><div class="lbl">Experience</div></div>
+        <div class="stat-item"><div class="num">4.9★</div><div class="lbl">Average Rating</div></div>
+      </div>
+    </div>
+    <div class="hero-dots">
+      <button class="active" data-slide="0"></button>
+      <button data-slide="1"></button>
+      <button data-slide="2"></button>
+    </div>
+  </section>
+
+
+  <!-- ── FEATURED DEALS ── -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="label">✨ Limited Time Offers</div>
+        <h2>Featured Deals & Destinations</h2>
+        <p>Hand-picked packages with unbeatable value — for every kind of traveller.</p>
+      </div>
+      <div class="deals-grid">
+        <div class="deal-card">
+          <div class="deal-img" style="background-image:url('img/bali.avif'); background-size:cover; background-position:center;">
+            
+            <div class="deal-tag">Best Seller</div>
+          </div>
+          <div class="deal-body">
+            <h3>Bali Paradise Escape</h3>
+            <p class="sub">7 nights · Includes flights & resort</p>
+            <div class="deal-price">From $1,299 <small>/ person</small></div>
+          </div>
+        </div>
+        <div class="deal-card">
+          <div class="deal-img" style="background-image:url('img/paris.jpg'); background-size:cover; background-position:center;">
+            
+            <div class="deal-tag">Luxury Pick</div>
+          </div>
+          <div class="deal-body">
+            <h3>Paris Romantic Getaway</h3>
+            <p class="sub">8 nights · 5-star hotel included</p>
+            <div class="deal-price">From $2,800 <small>/ person</small></div>
+          </div>
+        </div>
+        <div class="deal-card">
+          <div class="deal-img" style="background-image:url('img/nz\ adventure.jpg'); background-size:cover; background-position:center;">
+            
+            <div class="deal-tag">Family Deal</div>
+          </div>
+          <div class="deal-body">
+            <h3>New Zealand Adventure</h3>
+            <p class="sub">10 nights · Kids under 12 FREE</p>
+            <div class="deal-price">From $2,100 <small>/ person</small></div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:40px">
+        <a href="pages/destinations.html" class="btn btn-teal">View All Destinations →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY CHOOSE US ── -->
+  <section class="section section-light">
+    <div class="container">
+      <div class="section-header">
+        <div class="label">Why Travel With Us</div>
+        <h2>The Sydney Global Difference</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-icon">🛡️</div>
+          <h3>100% Secure Booking</h3>
+          <p>Your payments and personal data are always protected with us.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">🌐</div>
+          <h3>60+ Destinations</h3>
+          <p>From hidden gems to iconic cities — we go everywhere you dream of.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">🤝</div>
+          <h3>Expert Local Guides</h3>
+          <p>Travel with specialists who know your destination inside and out.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">📞</div>
+          <h3>24/7 Support</h3>
+          <p>We're with you before, during, and after every trip — always on call.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="nav-logo">Sydney<span style="color:var(--accent)">Global</span></div>
+          <p>Turning travel dreams into lifelong memories since 2010. Based in Sydney, serving Australia and beyond.</p>
+        </div>
+        <div>
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="pages/destinations.html">Destinations</a></li>
+            <li><a href="pages/tours.html">Tours</a></li>
+            <li><a href="pages/about.html">About Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Popular Trips</h4>
+          <ul>
+            <li><a href="#">Bali Escape</a></li>
+            <li><a href="#">Paris Romance</a></li>
+            <li><a href="#">Tokyo Adventure</a></li>
+            <li><a href="#">NZ Family Tour</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="#">📍 200 George St, Sydney</a></li>
+            <li><a href="#">📞 (02) 9123 4567</a></li>
+            <li><a href="#">📧 hello@sydneyglobaladventures.com.au</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 Sydney Global Adventures · ITS106 Group Project T1 2026
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Mobile nav toggle
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // ── Hero slideshow
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots   = document.querySelectorAll('.hero-dots button');
+    let current  = 0;
+    let timer;
+
+    function goTo(n) {
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+    }
+
+    function autoPlay() {
+      timer = setInterval(() => goTo(current + 1), 4500);
+    }
+
+    dots.forEach((btn, i) => btn.addEventListener('click', () => {
+      clearInterval(timer);
+      goTo(i);
+      autoPlay();
+    }));
+
+    autoPlay();
+  </script>
+</body>
+</html>
